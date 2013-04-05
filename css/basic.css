@@ -1,0 +1,65 @@
+/*
+    Styles for basic, non-qualified experience
+*/
+body {
+ font-family: Arial, sans-serif;
+ font-size: 14px;
+ background-color: #ededed;   
+}
+img {
+ max-width: 100%   
+}
+
+.small {
+    width: 6em;
+    height: 6em;
+    background-color: red;
+    display: none;
+    color: #fff;
+    padding: .5em;
+}
+.medium {
+    width: 12em;
+    height: 12em;
+    background-color: blue;
+    display: none;
+    color: #fff;
+    padding: .5em;
+}
+.large {
+    width: 24em;
+    height: 24em;
+    background-color: green;
+    display: none;
+    color: #fff;
+    padding: .5em;
+}
+
+
+#boxes, #more-boxes {
+    display: block;
+}
+
+
+@media screen and (min-width: 500px), print {
+    #boxes,
+    #more-boxes {
+        content: "small";
+    }
+}
+@media screen and (min-width: 800px), print {
+    #boxes,
+    #more-boxes {
+        content: "medium";
+    }
+
+}
+
+@media screen and (min-width: 1000px), print {
+    #boxes {
+        content: "large";
+    }
+}
+
+
+

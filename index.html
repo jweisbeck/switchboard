@@ -1,0 +1,111 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 oldie" lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie8 oldie" lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js gt-ie8" lang="en" xmlns:og="http://ogp.me/ns#" xmlns:fb="http://ogp.me/ns/fb#"> <!--<![endif]-->
+    <head>
+        <title>Breakpoint switchboard</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+        <link rel="stylesheet" type="text/css" href="css/basic.css" id="basic-css">
+
+        <script src="js/libs/jquery.min.js"></script>
+
+    </head>
+
+    <body class="home">
+        <div id="contain">
+
+            <div id="boxes">            
+                <div class="box small">I am a small box!</div>
+                <div class="box medium">I am a medium box!</div>
+                <div class="box large">I am a large box!</div>
+            </div> 
+
+            <div id="more-boxes">            
+                <div class="box small">I am a small box!</div>
+                <div class="box medium">I am a medium box!</div>
+                <div class="box large">I am a large box!</div>
+            </div>           
+
+        </div>
+        <!-- <div id="break-switch" data-switches="small,medium,large"></div> -->
+    </body>
+
+        <script src="js/switchboard.js"></script>
+        <script>
+            // EXAMPLE USE
+            // this init should be run in your own project's js script
+
+            // if you want to run a global detect versus a scoped one, 
+            //just set the el to a dummy div and arrange the css and dom accordingly
+            $(function(){
+
+                var boxes = switchboard.init(); 
+                boxes.setup({
+                    settings: {
+                        el: '#boxes'  // required - scopes work down to a an element and passes a ref to the callbacks below
+                    },
+                    callbacks: {
+                        small: {
+                            enter: function(){
+                                //console.log(this.el);
+                                $(this.el).find('.box').hide();
+                                $(this.el).find('.small').fadeIn();
+                                console.log('I am entering small!');
+                            },
+                            exit: function(){
+                                console.log('I am exiting small!');
+                            }
+                        },
+                        medium: {
+                            enter: function(){
+                                //console.log(this.el);
+                                $(this.el).find('.box').hide();
+                                $(this.el).find('.medium').fadeIn();
+
+                            },
+                            exit: function(){
+                                console.log('I am exiting medium!');
+                            }
+                        },
+                        large: function(){
+                            //console.log(this.el);
+                            $(this.el).find('.box').hide();
+                            $(this.el).find('.large').fadeIn();
+                            console.log('I am entering large!');
+
+                        },
+                    }
+                }).run(true);
+
+
+                var moreBoxes = switchboard.init();
+                moreBoxes.setup({
+                    settings: {
+                        el: '#more-boxes'  // required - scopes work down to a an element and passes a ref to the callbacks below
+                    },
+                    callbacks: {
+                        small: {
+                            enter: function(){
+                                console.log(this.el);
+                                $(this.el).find('.box').hide();
+                                $(this.el).find('.small').fadeIn();
+                            },
+                            exit: function(){
+                                console.log('I am exiting small!');
+                            }
+                        },
+                        medium: function(){
+                            console.log(this.el);
+                            $(this.el).find('.box').hide();
+                            $(this.el).find('.medium').fadeIn();
+                        }
+                    }
+                }).run(true);
+
+            });
+        </script>
+
+</html>
