@@ -7,7 +7,7 @@
 ;(function(win, undefined) {
     var doc = win.document;
 
-    Switchboard = {
+    switchboard = {
         init: function(){
             // TODO - add object.create shim for old browsers
             return Object.create(this);
@@ -17,7 +17,7 @@
             // opts should be a object of callbacks to run
             // names should match the switch names in the DOM el with data-switches attr
             if( !opts.settings || !opts.callbacks ) {
-                console.log('Please pass the config pojso');
+                throw new Error('Please pass the config pojso');
                 return false;
             }
 
